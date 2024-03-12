@@ -8,13 +8,24 @@ http {
 
 	#access_log  logs/access.log  main;
 
-	sendfile        on;
+	#modif on to off
+	sendfile        off;
+
 	#tcp_nopush     on;
+
+	#ajout de tcp_nodelay &  absolute_redirect
+	tcp_nodelay on;
+	absolute_redirect off;
 
 	#keepalive_timeout  0;
 	keepalive_timeout  65;
 
-	#gzip  on;
+	#modif ajout de gzip
+	gzip on;
+    gzip_proxied any;
+    gzip_types text/plain application/xml text/css text/js text/xml application/x-javascript text/javascript application/json application/xml+rss;
+    gzip_vary on;
+    gzip_disable "msie6";
 
 	server_tokens off;
 
